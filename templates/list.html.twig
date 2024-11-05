@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Réservations{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste des Réservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Âge</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Heure</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.user ? reservation.user.surname : 'N/A' }}</td>
+                    <td>{{ reservation.user ? reservation.user.name : 'N/A' }}</td>
+                    <td>{{ reservation.user ? reservation.user.age : 'N/A' }}</td>
+                    <td>{{ reservation.user ? reservation.user.email : 'N/A' }}</td>
+                    <td>{{ reservation.service ? reservation.service.nom : 'N/A' }}</td>
+                    <td>{{ reservation.date ? reservation.date|date('d/m/Y') : 'N/A' }}</td>
+                    <td>{{ reservation.heure ? reservation.heure|date('H:i') : 'N/A' }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="form-group text-center">
+        <a href="{{ path('app_accueil') }}" class="btn btn-primary mx-2">Retour à l'accueil</a>
+    </div>
+{% endblock %}

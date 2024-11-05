@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Formulaire de Réservation</h1>
+
+    {# Affichage des messages flash pour les erreurs ou les succès #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} custom-alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="container">
+        {{ form_start(form, { 'attr': {'class': 'form-horizontal mx-auto', 'style': 'max-width: 600px;'} }) }}
+            <div class="form-group">
+                {{ form_row(form.name, { 'attr': {'class': 'form-control'}, 'label': 'Nom' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.surname, { 'attr': {'class': 'form-control'}, 'label': 'Prénom' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.age, { 'attr': {'class': 'form-control'}, 'label': 'Âge' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.email, { 'attr': {'class': 'form-control'}, 'label': 'Email' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.service, { 'attr': {'class': 'form-control'}, 'label': 'Service' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.date, { 'attr': {'class': 'form-control'}, 'label': 'Date de réservation' }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.heure, { 'attr': {'class': 'form-control'}, 'label': 'Heure de réservation' }) }}
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary">Réserver</button>
+                <a href="{{ path('app_accueil') }}" class="btn btn-secondary mx-2">Annuler la réservation</a>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

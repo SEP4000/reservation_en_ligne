@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation Confirmée{% endblock %}
+
+{% block body %}
+    <div class="container text-center mt-5">
+        <h1 class="mb-4">Merci pour votre réservation !</h1>
+        <p class="mb-4">Votre réservation a été enregistrée avec succès.</p>
+
+        <a href="{{ path('app_reservation_list') }}" class="btn btn-secondary">Voir les Réservations</a>
+        <a href="{{ path('app_accueil') }}" class="btn btn-primary mx-2">Retour à l'Accueil</a>
+    </div>
+{% endblock %}
